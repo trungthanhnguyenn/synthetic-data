@@ -1,0 +1,14 @@
+services:
+  synthetic_data_api:
+    build: .
+    container_name: synthetic_data_api
+    ports:
+      - "8686:8686"
+    volumes:
+      - ./data:/app/data
+      - ./model_api.log:/app/model_api.log
+      - ./src:/app/src
+      - ./scripts:/app/scripts
+    env_file:
+      - .env
+    restart: unless-stopped
